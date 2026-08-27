@@ -1,0 +1,25 @@
+{
+  "displayName": "contoso-AppReg-Operator",
+  "description": "Operate one app registration and assign people to the web app. Cannot add/remove owners, cannot delete the app or service principal, and cannot delegate administrative access.",
+  "isEnabled": true,
+  "rolePermissions": [
+    {
+      "allowedResourceActions": [
+        "microsoft.directory/applications/allProperties/read",
+        "microsoft.directory/applications/owners/read",
+        "microsoft.directory/applications/audience/update",
+        "microsoft.directory/applications/authentication/update",
+        "microsoft.directory/applications/basic/update",
+        "microsoft.directory/applications/credentials/update",
+        "microsoft.directory/applications/disablement/update",
+        "microsoft.directory/applications/permissions/update",
+        "microsoft.directory/servicePrincipals/allProperties/read",
+        "microsoft.directory/servicePrincipals/owners/read",
+        "microsoft.directory/servicePrincipals/appRoleAssignedTo/read",
+        "microsoft.directory/servicePrincipals/appRoleAssignedTo/update",
+        "microsoft.directory/servicePrincipals/appRoleAssignments/read",
+        "microsoft.directory/servicePrincipals/oAuth2PermissionGrants/read"
+      ]
+    }
+  ]
+}
