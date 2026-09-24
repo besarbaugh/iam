@@ -4,17 +4,19 @@ Public, vendor-documented practice artifacts for cloud identity and access manag
 
 ## Entra app registration without standing owners
 
-[`roles/contoso-app-reg-operator.json`](roles/contoso-app-reg-operator.json) defines a broad,
-application-scoped Microsoft Entra custom role that can manage an app registration and assign
-users or groups to app roles, but cannot:
+Current design after PO review (2026-09-24): replicate Cloud Application Administrator,
+then remove add-owner and delete. Owner cannot be trimmed. See
+[`docs/cloud-application-operator.md`](docs/cloud-application-operator.md) and
+[`roles/contoso-cloud-application-operator.json`](roles/contoso-cloud-application-operator.json).
 
-- add or remove application or service-principal owners;
-- create or delete applications;
-- update catch-all privileged property sets; or
-- create roles or delegate administrative access.
+A narrower application-scoped operator remains in
+[`roles/contoso-app-reg-operator.json`](roles/contoso-app-reg-operator.json). That role can
+manage one existing app and assign users or groups to app roles, but cannot create apps,
+add or remove owners, or delete the app. Design notes:
+[`docs/app-reg-owner-replacement.md`](docs/app-reg-owner-replacement.md).
 
-Read the [design notes](docs/app-reg-owner-replacement.md) and run the
-[sandbox validation checklist](docs/validation-checklist.md) before adapting it.
+Run the [sandbox validation checklist](docs/validation-checklist.md) before adapting either
+role.
 
 This repository contains generic learning material only. It contains no tenant identifiers,
 application identifiers, credentials, or organization-specific procedures.

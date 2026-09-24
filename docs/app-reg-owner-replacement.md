@@ -1,5 +1,15 @@
 # Replace app-registration owners with scoped administration
 
+## Status
+
+2026-09-24: PO chose the Cloud Application Administrator template minus add-owner and
+delete, not a trimmed Owner ACE and not this narrower application-scoped operator as the
+primary design. Current write-up:
+[cloud-application-operator.md](cloud-application-operator.md).
+
+This page is the earlier application-scoped operator. It is still valid when the assignee
+should manage one existing app and must not create apps directory-wide.
+
 ## Security invariant
 
 An Operator may broadly administer one existing app registration and assign users or groups to
@@ -39,8 +49,10 @@ construction is therefore a positive list of permitted property sets, not
 - `applications/credentials/update` is deliberately powerful. Someone who can add a secret or
   certificate may impersonate the application. A stronger production design can separate
   credential rotation into another PIM-eligible role.
-- `applications/create` is intentionally absent. It is ineffective when the role is assigned at
+- `applications/create` is intentionally absent here. It is ineffective when the role is assigned at
   application scope and becomes broad creation authority if assigned at directory scope.
+  The PO design in [cloud-application-operator.md](cloud-application-operator.md) includes
+  `applications/create` and expects directory-scope assignment for a platform team.
 
 ## Assignment and migration
 
